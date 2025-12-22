@@ -1,0 +1,5 @@
+log_groups:
+  - state
+  - resource
+  - service
+  - application

@@ -1,0 +1,19 @@
+prod:
+  coreif:
+    - ap
+    - db
+    - jp1
+    - relay
+  concur:
+    - ap
+  ec:
+    - ap
+  kinken:
+    - ap
+  consumable:
+    - int1
+    - int2
+    - ext1
+    - ext2
+    - db
+    
