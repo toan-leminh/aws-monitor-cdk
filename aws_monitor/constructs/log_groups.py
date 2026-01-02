@@ -33,7 +33,7 @@ class LogGroups(Construct):
         system: str,
         groups: Iterable[str], # e.g. ['state', 'resource', 'service', 'application']
         prefix: str, # project prefix
-        retention: logs.RetentionDays = logs.RetentionDays.SIX_MONTHS,
+        retention: logs.RetentionDays = logs.RetentionDays.ONE_YEAR,
         removal_policy: RemovalPolicy = RemovalPolicy.DESTROY,
     ) -> None:
         super().__init__(scope, id)

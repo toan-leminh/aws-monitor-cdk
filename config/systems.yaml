@@ -1,4 +1,4 @@
-prod:
+prd:
   coreif:
     - ap
     - db

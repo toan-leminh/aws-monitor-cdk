@@ -1,9 +1,13 @@
 import boto3
 import time
 import json
+import logging
 
 ec2 = boto3.client("ec2")
 logs = boto3.client("logs")
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def get_tag(tags, key):
     for t in tags:
@@ -11,7 +15,9 @@ def get_tag(tags, key):
             return t["Value"]
     return "unknown"
 
-def handler(event, context):
+def lambda_handler(event, context):
+    logger.debug("Received Event detail:\n%s", json.dumps(event, indent=2))
+
     instance_id = event["detail"]["instance-id"]
     state = event["detail"]["state"]  # running | stopped
 
@@ -23,8 +29,11 @@ def handler(event, context):
     env = get_tag(tags, "Env")
     system = get_tag(tags, "System")
 
-    log_group = f"{env}/{system}/state"
+    log_group = f"/{env}/{system}/state"
     log_stream = name
+
+    logger.debug("Target log group:\n%s", log_group)
+    logger.debug("Target log stream:\n%s", log_stream)
 
     timestamp = int(time.time() * 1000)
     message = json.dumps({

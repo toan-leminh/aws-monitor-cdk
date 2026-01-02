@@ -21,14 +21,16 @@ class Ec2StateLoggerConstruct(Construct):
         fn = _lambda.Function(
             self,
             f"{prefix}-Ec2StateLoggerFn",
+            function_name=f"{prefix}-Ec2StateLoggerFn",
             runtime=_lambda.Runtime.PYTHON_3_11,
             handler="handler.handler",
-            code=_lambda.Code.from_asset("lambda/ec2_state_logger"),
-            timeout=Duration.seconds(30)
+            code=_lambda.Code.from_asset("aws_monitor/lambda/ec2_state_logger"),
+            timeout=Duration.seconds(30),
         )
 
-        fn.add_to_role_policy(
-            iam.PolicyStatement(
+        fn.role.attach_inline_policy(
+            iam.Policy(
+                self,
                 f"{prefix}-Ec2StateLoggerPolicy",
                 policy_name=f"{prefix}-Ec2StateLoggerPolicy",
                 statements=[
