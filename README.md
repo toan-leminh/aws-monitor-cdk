@@ -71,17 +71,22 @@ pip install -r requirements.txt
 aws-monitor-cdk/
 │
 ├── app.py
-├── stacks/
-│   ├── monitoring_stack.py
+├── aws_monitor/
+│   ├── aws_monitor_cdk_stack.py
 │
 ├── constructs/
 │   ├── log_groups.py
-│   ├── alarms.py
-│   ├── eventbridge_startstop.py
-│   ├── cw_agent_ssm.py
+│   ├── ec2_state_logger.py
+│
+├── lamda/
+│   ├── ec2_auto_start_stop
+│   ├── ec2_resource_alarm
+│   ├──ec2_state_logger
 │
 ├── config/
-│   └── systems.yaml  
+│   ├──systems.yaml  
+│   ├── setting.yaml
+│.  ├── logs.yaml
 │
 └── requirements.txt 
 ```
