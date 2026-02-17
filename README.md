@@ -1,5 +1,5 @@
 
-# Welcome to your CDK Python project!
+# CDK Python project for helping monitoring task!
 
 Require
   Python version >= 3.11
@@ -67,6 +67,7 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 
 ## Project struture
+```text
 aws-monitor-cdk/
 │
 ├── app.py
@@ -80,6 +81,7 @@ aws-monitor-cdk/
 │   ├── cw_agent_ssm.py
 │
 ├── config/
-│   └── systems.yaml       # Chỉ khai báo tên hệ thống → không khai báo EC2
+│   └── systems.yaml  
 │
 └── requirements.txt 
+```
